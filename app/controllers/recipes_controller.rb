@@ -22,6 +22,28 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
+    if @recipe.user_id != current_user.id #編集する時、user_idとログインユーザーが等しくない(!=は等しくない)
+      redirect_to recipes_path, alert: '不正なアクセスです。' #レシピの一覧画面に遷移
+    end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe), notice: "投稿に成功しました。" #レシピの詳細画面に遷移
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+    redirect_to recipes_path #レシピの一覧画面に遷移
+
+    #@がついていないのはローカル変数だから
+    #destroyアクションはビューには渡さないからつけていない
   end
 
   private
