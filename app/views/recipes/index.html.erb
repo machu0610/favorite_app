@@ -10,16 +10,15 @@
           </tr>
         </thead>
         <tbody>
-          <%= @recipes.each do|recipe| %>
+          <% @recipes.each do|recipe| %>
             <tr>
               <td><%= link_to recipe.title, recipe_path(recipe) %></td>
-              <td><%= link_to recipe.user.name %></td>
+              <td><%= recipe.user.name %></td>
               <td></td>
             </tr>
           <% end %>
-      </tbody>
+        </tbody>
       </table>
-      </div>
     </div>
   </div>
 </div>
