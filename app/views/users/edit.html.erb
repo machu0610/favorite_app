@@ -1,8 +1,8 @@
 <% if @user.errors.any? %>
   <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading"><%= pluralize(@user.errors.count), "error" %></h4><%#pluralizeヘルパーは英語専用のテキストヘルパー%>
+    <h4 class="alert-heading"><%= pluralize(@user.errors.count, "error") %></h4><%#pluralizeヘルパーは英語専用のテキストヘルパー%>
     <%#pluralizeヘルパーは、最初の引数に整数があると、それに基づいて二番目の引数である英単語が複数形に変化したものが渡される%>
-    <p><%= pluralize(@user.errors.count), "error"%> prohibited this object from being saved: not successfully</p>
+    <p><%= pluralize(@user.errors.count, "error") %> prohibited this object from being saved: not successfully</p>
     <hr>
     <p class="mb-0">
       <%= @user.errors.full_messages.each do |message| %>
