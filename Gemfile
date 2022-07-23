@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'devise'
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
 
 gem 'rails',      '6.0.4'
 gem 'puma',       '4.3.6'
