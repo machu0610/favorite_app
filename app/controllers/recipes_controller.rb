@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe), notice: "投稿に成功しました。" #レシピの詳細画面に遷移
+      redirect_to recipe_path(@recipe), notice: "更新に成功しました。" #レシピの詳細画面に遷移
     else
       render :edit
     end
