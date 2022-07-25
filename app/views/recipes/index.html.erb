@@ -14,7 +14,18 @@
             <tr>
               <td><%= link_to recipe.title, recipe_path(recipe) %></td>
               <td><%= recipe.user.name %></td>
-              <td></td>
+              <td>
+                <% if current_user.already_favorited?(recipe) %><%#already_favorited?はuserモデルで作成したモデル%>
+                  <%= link_to recipe_favorites_path(recipe), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to recipe_favorites_path(recipe), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+                <%= recipe.favorites.count %><%#これでレシピについたいいねを全て取ってくることができる。%>
+              </td>
             </tr>
           <% end %>
         </tbody>
